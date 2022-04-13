@@ -6,143 +6,103 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/07 18:34:14 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:02:10 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<mlx.h>
-#include<stdio.h>
 #include"fdf.h"
-#include<fcntl.h>
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	y_updater(t_dimen dim, t_guhuza **matriz, int bargak_setra)
 {
-	char	*dst;
+	int	s;
+	int	t;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	s = 0;
+	t = 0;
+	while (s < dim.l)
+	{
+		while (t < dim.c)
+		{
+			matriz[s][t].y -= matriz[s][t].z * bargak_setra * 1.5;
+			t++;
+		}
+		t = 0;
+		s++;
+	}
+}
+
+t_dimen	dim_formater(char *map)
+{
+	t_dimen	dim;
+	int		fd;
+	char	*line;
+
+	dim.c = 0;
+	dim.l = 0;
+	fd = open(map, O_RDWR);
+	line = get_next_line(fd);
+	while (line)
+	{
+		dim.c = valuescount(line);
+		dim.l++;
+		free(line);
+		line = get_next_line(fd);
+	}	
+	close(fd);
+	return (dim);
+}
+
+t_guhuza	**calc_mesh(t_dimen dim, int bargak_setra, char *str, t_guhuza **m)
+{
+	char		*mr;
+	int			*ar;
+	int			*pxl;
+
+	ar = (int [3]){-1, dim.l, open(str, O_RDWR)};
+	pxl = (int [4]){WINW / 2, WINH - 40, WINW / 2, WINH - 40};
+	while (--ar[1] >= 0)
+	{
+		mr = get_next_line(ar[2]);
+		while (++ar[0] < dim.c)
+		{
+			m[ar[1]][ar[0]].x = pxl[0];
+			m[ar[1]][ar[0]].y = pxl[1];
+			m[dim.l - ar[1] - 1][ar[0]].z = ft_atoi(ft_split(mr, 32)[ar[0]]);
+			pxl[0] += (bargak_setra * 3 / 2);
+			pxl[1] -= (bargak_setra);
+		}
+		pxl[2] -= (bargak_setra * 3 / 2);
+		pxl[3] -= (bargak_setra);
+		pxl[0] = pxl[2];
+		pxl[1] = pxl[3];
+		ar[0] = -1;
+	}
+	return (m);
 }
 
 int	main(int ac, char **av)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	int		fd;
-	char	*line;
-	int		columns = 0;
-	int		lines = 0;
+	int			bargak_setra;
+	int			counter;
+	t_dimen		dim;
+	t_guhuza	**matriz;
+	t_winint	g;
 
 	if (ac != 2)
 		return (0);
-	fd = open(av[1], O_RDWR);
-	columns = valuescount(get_next_line(fd));
-	printf("%d\n", columns);
-	while ((line = get_next_line(fd)))
-    {
-      //  printf("%s", line);
-		lines++;
-        free(line);
-	}
-	printf("%d", lines);
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Fil de fer");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	
-	
-	int Bargakṣētra = 0;
-	
-	if (columns >= lines)
-		Bargakṣētra = columns;
-	else
-		Bargakṣētra = lines;
-
-	if (Bargakṣētra <= 20)
-		Bargakṣētra = 17;
-	else if (Bargakṣētra <= 50)
-		Bargakṣētra = 9;
-	else if (Bargakṣētra <= 100)
-		Bargakṣētra = 7;
-	else
-		Bargakṣētra = 1;
-
-
-	int x = 960;
-	int y = 1079;
-	int xstart = x;
-	int ystart = y;
-	
-	int ncolumns = columns - 1;
-	int i = Bargakṣētra * ncolumns;
-
-	int nlines = lines - 1;
-	
-	while (lines)
+	counter = 0;
+	g = graf_init();
+	dim = dim_formater(av[1]);
+	bargak_setra = bargaksetra(dim.c, dim.l);
+	matriz = malloc(sizeof(t_guhuza *) * dim.l);
+	while (counter < dim.l)
 	{
-		x = xstart;
-		y = ystart;
-		i = Bargakṣētra * ncolumns;
-		while (i)
-		{
-			my_mlx_pixel_put(&img, x, y, 0x00EEE9FF);
-			y--;
-			for (int b = 0; b < 2; b++)
-			{
-				for (int a = 0; a < 2; a++)
-					my_mlx_pixel_put(&img, x++, y, 0x00EEE9FF);
-				x++;
-				y--;
-				b++;
-			}
-			i--;
-		}
-		xstart -= (Bargakṣētra * 3);
-		ystart -= (Bargakṣētra * 2);
-		lines--;
+		matriz[counter] = malloc(sizeof(t_guhuza) * dim.c + 1);
+		counter++;
 	}
-
-	x = 1920/2;
-	y = 1079;
-	xstart = x;
-	ystart = y;
-
-	int e = Bargakṣētra * nlines;
-
-	while (columns)
-	{
-		x = xstart;
-		y = ystart;
-		e = Bargakṣētra * nlines;
-		while (e)
-		{
-			my_mlx_pixel_put(&img, x, y, 0x00EEE9FF);
-			y--;
-			for (int b = 0; b < 2; b++)
-			{
-				for (int a = 0; a < 2; a++)
-					my_mlx_pixel_put(&img, x--, y, 0x00EEE9FF);
-				x--;
-				y--;
-				b++;
-			}
-			e--;
-		}
-		xstart += (Bargakṣētra * 3);
-		ystart -= (Bargakṣētra * 2);
-		columns--;
-	}
-	
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	matriz = calc_mesh(dim, bargak_setra, av[1], matriz);
+	y_updater(dim, matriz, bargak_setra);
+	fil_de_fer(dim, matriz, g.img);
+	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
+	mlx_loop(g.mlx);
 }
