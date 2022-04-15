@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/14 18:36:50 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/15 17:23:04 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,11 @@ void		column_drawer(t_dimen dim, t_guhuza **m, t_data img);
 t_winint	graf_init(void);
 
 float		bs_zupdater(float bargak_setra, t_dimen d, char *str);
+
+int			error_check(int ac, char *str);
+
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+
+void		graph_actions(t_winint g);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/14 18:23:38 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/15 17:22:14 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	main(int ac, char **av)
 	t_guhuza	**matriz;
 	t_winint	g;
 
-	if (ac != 2)
+	if (error_check(ac, av[1]) == 0)
 		return (0);
 	counter = 0;
 	g = graf_init();
@@ -104,5 +104,6 @@ int	main(int ac, char **av)
 	y_updater(dim, matriz, bargak_setra);
 	fil_de_fer(dim, matriz, g.img);
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
+	graph_actions(g);
 	mlx_loop(g.mlx);
 }
