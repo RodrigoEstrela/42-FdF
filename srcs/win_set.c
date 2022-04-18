@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:13:52 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/14 12:55:53 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:26:00 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->len + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
+	if (x >= 0 && x < W && y >= 0 && y < H)
+	{
+		dst = data->addr + (y * data->len + x * (data->bpp / 8));
+		*(unsigned int *)dst = color;
+	}
 }
 
 t_winint	graf_init(void)

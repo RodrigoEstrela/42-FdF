@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/15 17:23:04 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:46:28 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ size_t		ft_strlcpy(char *dst, char *src, size_t size);
 
 int			valuescount(char *s);
 
-long long	ft_atoi(const char *str);
+int			ft_atoi(const char *str);
 
 char		**ft_split(const char *s, char c);
 

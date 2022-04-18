@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:16:46 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/15 17:43:43 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:43:23 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 static int	close_win(int key, t_winint g)
 {
 	if (key == 53)
-	{
-		mlx_destroy_window(g.mlx, g.mlx_win);
 		exit(0);
-	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/15 17:22:14 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/18 18:15:02 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	y_updater(t_dimen dim, t_guhuza **matriz, float bargak_setra)
 	{
 		while (t < dim.c)
 		{
-			matriz[s][t].y -= matriz[s][t].z * bargak_setra * 1.5;
+			matriz[s][t].y -= matriz[s][t].z * bargak_setra;
 			t++;
 		}
 		t = 0;
@@ -58,7 +58,7 @@ t_guhuza	**calc_mesh(t_dimen d, float bs, char *str, t_guhuza **m)
 	int			*ar;
 	char		**pp;
 
-	ar = (int [7]){-1, d.l, open(str, O_RDWR), W / 2, H / 2, W / 2, H / 2};
+	ar = (int [7]){-1, d.l, open(str, O_RDWR), W / 2, H - H / 3, W / 2, H - H / 3};
 	while (--ar[1] >= 0)
 	{
 		mr = get_next_line(ar[2]);
@@ -68,10 +68,10 @@ t_guhuza	**calc_mesh(t_dimen d, float bs, char *str, t_guhuza **m)
 			m[ar[1]][ar[0]].x = ar[3];
 			m[ar[1]][ar[0]].y = ar[4];
 			m[d.l - ar[1] - 1][ar[0]].z = ft_atoi(pp[ar[0]]);
-			ar[3] += (bs * 3 / 1.5);
+			ar[3] += (bs * 1.8);
 			ar[4] -= (bs);
 		}
-		ar[5] -= (bs * 3 / 1.5);
+		ar[5] -= (bs * 1.8);
 		ar[6] -= (bs);
 		ar[3] = ar[5];
 		ar[4] = ar[6];
@@ -93,11 +93,12 @@ int	main(int ac, char **av)
 	counter = 0;
 	g = graf_init();
 	dim = dim_formater(av[1]);
+	printf("l:%d\n c:%d\n", dim.l, dim.c);
 	bargak_setra = bargaksetra(dim.c, dim.l, dim, av[1]);
 	matriz = malloc(sizeof(t_guhuza *) * dim.l);
 	while (counter < dim.l)
 	{
-		matriz[counter] = malloc(sizeof(t_guhuza) * dim.c + 1);
+		matriz[counter] = malloc(sizeof(t_guhuza) * dim.c);
 		counter++;
 	}
 	matriz = calc_mesh(dim, bargak_setra, av[1], matriz);

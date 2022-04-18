@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:19:59 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/15 18:12:00 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/18 18:29:00 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ float	bs_zupdater(float bargak_setra, t_dimen d, char *str)
 		while (++ar[0] < d.c)
 		{
 			if (ft_atoi(pp[ar[0]]) >= 20 || ft_atoi(pp[ar[0]]) <= -20)
-				return (bargak_setra * 0.25);
+				return (bargak_setra * 0.5);
 		}
 		ar[0] = -1;
 	}
@@ -43,17 +43,21 @@ float	bargaksetra(int columns, int lines, t_dimen d, char *str)
 	else
 		bargak_setra = lines;
 	if (bargak_setra <= 15)
-		bargak_setra = 6;
+		bargak_setra = 8;
 	else if (bargak_setra <= 30)
-		bargak_setra = 5;
+		bargak_setra = 7;
 	else if (bargak_setra <= 45)
-		bargak_setra = 4;
+		bargak_setra = 6;
 	else if (bargak_setra <= 60)
-		bargak_setra = 3;
+		bargak_setra = 5;
 	else if (bargak_setra <= 100)
-		bargak_setra = 2;
+		bargak_setra = 4;
+	else if (bargak_setra <= 200)
+		bargak_setra = 3;
+	else if (bargak_setra <= 450)
+		bargak_setra = 0.1;
 	else
-		bargak_setra = 1;
-	bargak_setra = bs_zupdater(bargak_setra, d, str);
+		bargak_setra = 2;
+//	bargak_setra = bs_zupdater(bargak_setra, d, str);
 	return (bargak_setra);
 }
