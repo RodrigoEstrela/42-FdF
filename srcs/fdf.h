@@ -84,13 +84,13 @@ t_dimen		dim_formater(char *map);
 
 t_guhuza	**calc_mesh(t_dimen d, float bs, char *str, t_guhuza **m);
 
+t_winint	graf_init(void);
+
 void		fil_de_fer(t_dimen dim, t_guhuza **m, t_data img);
 
 void		line_drawer(t_dimen dim, t_guhuza **m, t_data img);
 
 void		column_drawer(t_dimen dim, t_guhuza **m, t_data img);
-
-t_winint	graf_init(void);
 
 float		bs_zupdater(float bargak_setra, t_dimen d, char *str);
 
