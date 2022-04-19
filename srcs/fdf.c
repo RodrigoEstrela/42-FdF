@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 14:08:38 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:23:55 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	main(int ac, char **av)
 		g.m[counter++] = malloc(sizeof(t_guhuza) * g.d.c);
 	g.d.chgx = 0;
 	g.d.chgy = 0;
+	g.img.color = 0x0000FF00;
 	g.m = calc_mesh(g.d, g.bs, g.inp, g.m);
 	y_updater(g.d, g.m, g.bs);
 	fil_de_fer(g.d, g.m, g.img);

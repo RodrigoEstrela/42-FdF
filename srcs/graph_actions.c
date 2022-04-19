@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:16:46 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 13:58:00 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:27:23 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	key_action(int key, t_winint *g)
 		down(g);
 	else if (key == 126)
 		up(g);
+	else if (key == 11)
+		g->img.color = 0x000000FF;
 	return (0);
 }
 
