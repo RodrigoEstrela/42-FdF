@@ -1,65 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   directions.c                                       :+:      :+:    :+:   */
+/*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 13:49:19 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 16:07:40 by rdas-nev         ###   ########.fr       */
+/*   Created: 2022/04/19 16:12:55 by rdas-nev          #+#    #+#             */
+/*   Updated: 2022/04/19 16:39:33 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 
-static void	left(t_winint *g)
+static void	zoom_in(t_winint *g)
 {
 	ft_bzero(g->img.addr, H * W * (g->img.bpp / 8));
-	g->d.chgx -= 37;
+	if (g->bs < 30)
+		g->bs *= 1.5;
 	g->m = calc_mesh(g->d, g->bs, g->inp, g->m);
 	y_updater(g->d, g->m, g->bs);
 	fil_de_fer(g->d, g->m, g->img);
 	mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.img, 0, 0);
 }
 
-static void	right(t_winint *g)
+static void	zoom_out(t_winint *g)
 {
 	ft_bzero(g->img.addr, H * W * (g->img.bpp / 8));
-	g->d.chgx += 37;
+	if (g->bs > 1)
+		g->bs /= 1.5;
 	g->m = calc_mesh(g->d, g->bs, g->inp, g->m);
 	y_updater(g->d, g->m, g->bs);
 	fil_de_fer(g->d, g->m, g->img);
 	mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.img, 0, 0);
 }
 
-static void	up(t_winint *g)
+void	zoom(int key, t_winint *g)
 {
-	ft_bzero(g->img.addr, H * W * (g->img.bpp / 8));
-	g->d.chgy -= 37;
-	g->m = calc_mesh(g->d, g->bs, g->inp, g->m);
-	y_updater(g->d, g->m, g->bs);
-	fil_de_fer(g->d, g->m, g->img);
-	mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.img, 0, 0);
-}
-
-static void	down(t_winint *g)
-{
-	ft_bzero(g->img.addr, H * W * (g->img.bpp / 8));
-	g->d.chgy += 37;
-	g->m = calc_mesh(g->d, g->bs, g->inp, g->m);
-	y_updater(g->d, g->m, g->bs);
-	fil_de_fer(g->d, g->m, g->img);
-	mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.img, 0, 0);
-}
-
-void	directions(int key, t_winint *g)
-{
-	if (key == 123)
-		left(g);
-	else if (key == 124)
-		right(g);
-	else if (key == 125)
-		down(g);
-	else if (key == 126)
-		up(g);
+	if (key == 6)
+		zoom_in(g);
+	else if (key == 7)
+		zoom_out(g);
 }

@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 14:14:11 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:51:16 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,10 @@ void			y_updater(t_dimen dim, t_guhuza **matriz, float bargak_setra);
 
 void			ft_bzero(void *s, size_t n);
 
-void			left(t_winint *g);
+void			directions(int key, t_winint *g);
 
-void			right(t_winint *g);
+void			colors(int key, t_winint *g);
 
-void			up(t_winint *g);
-
-void			down(t_winint *g);
+void			zoom(int key, t_winint *g);
 
 #endif

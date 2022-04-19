@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:16:46 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 14:27:23 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:51:14 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@ static int	key_action(int key, t_winint *g)
 {
 	if (key == 53)
 		exit(0);
-	else if (key == 123)
-		left(g);
-	else if (key == 124)
-		right(g);
-	else if (key == 125)
-		down(g);
-	else if (key == 126)
-		up(g);
-	else if (key == 11)
-		g->img.color = 0x000000FF;
+	else if (key >= 123 && key <= 126)
+		directions(key, g);
+	else if (key >= 0 && key <= 3)
+		colors(key, g);
+	else if (key == 6 || key == 7)
+		zoom(key, g);
 	return (0);
 }
 

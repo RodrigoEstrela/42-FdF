@@ -6,32 +6,11 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:19:59 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 13:03:54 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:41:06 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
-
-/*float	bs_zupdater(float bargak_setra, t_dimen d, char *str)
-{
-	int		*ar;
-	char	**pp;
-	char	*map;
-
-	ar = (int [3]){-1, d.l, open(str, O_RDWR)};
-	while (--ar[1] >= 0)
-	{
-		map = get_next_line(ar[2]);
-		pp = ft_split(map, 32);
-		while (++ar[0] < d.c)
-		{
-			if (ft_atoi(pp[ar[0]]) >= 20 || ft_atoi(pp[ar[0]]) <= -20)
-				return (bargak_setra * 0.5);
-		}
-		ar[0] = -1;
-	}
-	return (bargak_setra);
-}*/
 
 float	bargaksetra(int columns, int lines)
 {
