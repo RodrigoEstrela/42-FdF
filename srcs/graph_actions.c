@@ -6,16 +6,24 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:16:46 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/18 15:43:23 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 13:58:00 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 
-static int	close_win(int key, t_winint g)
+static int	key_action(int key, t_winint *g)
 {
 	if (key == 53)
 		exit(0);
+	else if (key == 123)
+		left(g);
+	else if (key == 124)
+		right(g);
+	else if (key == 125)
+		down(g);
+	else if (key == 126)
+		up(g);
 	return (0);
 }
 
@@ -27,6 +35,6 @@ static int	on_destroy_win(void)
 
 void	graph_actions(t_winint g)
 {
-	mlx_hook(g.mlx_win, 2, 1L << 0, close_win, &g);
+	mlx_hook(g.mlx_win, 2, 1L << 0, key_action, &g);
 	mlx_hook(g.mlx_win, 17, 1L << 0, on_destroy_win, &g);
 }

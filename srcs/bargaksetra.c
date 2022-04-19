@@ -6,13 +6,13 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:19:59 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/18 18:29:00 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 13:03:54 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 
-float	bs_zupdater(float bargak_setra, t_dimen d, char *str)
+/*float	bs_zupdater(float bargak_setra, t_dimen d, char *str)
 {
 	int		*ar;
 	char	**pp;
@@ -31,9 +31,9 @@ float	bs_zupdater(float bargak_setra, t_dimen d, char *str)
 		ar[0] = -1;
 	}
 	return (bargak_setra);
-}
+}*/
 
-float	bargaksetra(int columns, int lines, t_dimen d, char *str)
+float	bargaksetra(int columns, int lines)
 {
 	float	bargak_setra;
 
@@ -58,6 +58,5 @@ float	bargaksetra(int columns, int lines, t_dimen d, char *str)
 		bargak_setra = 0.1;
 	else
 		bargak_setra = 2;
-//	bargak_setra = bs_zupdater(bargak_setra, d, str);
 	return (bargak_setra);
 }

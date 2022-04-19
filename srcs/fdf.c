@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/18 18:15:02 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:08:38 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ t_guhuza	**calc_mesh(t_dimen d, float bs, char *str, t_guhuza **m)
 	int			*ar;
 	char		**pp;
 
-	ar = (int [7]){-1, d.l, open(str, O_RDWR), W / 2, H - H / 3, W / 2, H - H / 3};
+	ar = (int [7]){-1, d.l, open(str, O_RDWR), W / 2, H * 0.6, W / 2, H * 0.6};
 	while (--ar[1] >= 0)
 	{
 		mr = get_next_line(ar[2]);
 		pp = ft_split(mr, 32);
 		while (++ar[0] < d.c)
 		{
-			m[ar[1]][ar[0]].x = ar[3];
-			m[ar[1]][ar[0]].y = ar[4];
+			m[ar[1]][ar[0]].x = ar[3] + d.chgx;
+			m[ar[1]][ar[0]].y = ar[4] + d.chgy;
 			m[d.l - ar[1] - 1][ar[0]].z = ft_atoi(pp[ar[0]]);
 			ar[3] += (bs * 1.8);
 			ar[4] -= (bs);
@@ -82,28 +82,25 @@ t_guhuza	**calc_mesh(t_dimen d, float bs, char *str, t_guhuza **m)
 
 int	main(int ac, char **av)
 {
-	float		bargak_setra;
 	int			counter;
-	t_dimen		dim;
-	t_guhuza	**matriz;
 	t_winint	g;
 
 	if (error_check(ac, av[1]) == 0)
 		return (0);
-	counter = 0;
 	g = graf_init();
-	dim = dim_formater(av[1]);
-	printf("l:%d\n c:%d\n", dim.l, dim.c);
-	bargak_setra = bargaksetra(dim.c, dim.l, dim, av[1]);
-	matriz = malloc(sizeof(t_guhuza *) * dim.l);
-	while (counter < dim.l)
-	{
-		matriz[counter] = malloc(sizeof(t_guhuza) * dim.c);
-		counter++;
-	}
-	matriz = calc_mesh(dim, bargak_setra, av[1], matriz);
-	y_updater(dim, matriz, bargak_setra);
-	fil_de_fer(dim, matriz, g.img);
+	g.inp = ft_calloc(ft_strlen(av[1] + 1), sizeof(char *));
+	g.inp = ft_strdup((const char *)av[1]);
+	counter = 0;
+	g.d = dim_formater(g.inp);
+	g.bs = bargaksetra(g.d.c, g.d.l);
+	g.m = malloc(sizeof(t_guhuza *) * g.d.l);
+	while (counter < g.d.l)
+		g.m[counter++] = malloc(sizeof(t_guhuza) * g.d.c);
+	g.d.chgx = 0;
+	g.d.chgy = 0;
+	g.m = calc_mesh(g.d, g.bs, g.inp, g.m);
+	y_updater(g.d, g.m, g.bs);
+	fil_de_fer(g.d, g.m, g.img);
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	graph_actions(g);
 	mlx_loop(g.mlx);
