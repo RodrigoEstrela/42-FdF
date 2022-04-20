@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:19:59 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 16:41:06 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/20 11:32:42 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ float	bargaksetra(int columns, int lines)
 	else
 		bargak_setra = lines;
 	if (bargak_setra <= 15)
-		bargak_setra = 8;
+		bargak_setra = 21;
 	else if (bargak_setra <= 30)
-		bargak_setra = 7;
+		bargak_setra = 18;
 	else if (bargak_setra <= 45)
-		bargak_setra = 6;
+		bargak_setra = 15;
 	else if (bargak_setra <= 60)
-		bargak_setra = 5;
+		bargak_setra = 12;
 	else if (bargak_setra <= 100)
-		bargak_setra = 4;
-	else if (bargak_setra <= 200)
-		bargak_setra = 3;
+		bargak_setra = 9;
+	else if (bargak_setra <= 250)
+		bargak_setra = 6;
 	else if (bargak_setra <= 450)
-		bargak_setra = 0.1;
+		bargak_setra = 3;
 	else
-		bargak_setra = 2;
+		bargak_setra = 1;
 	return (bargak_setra);
 }

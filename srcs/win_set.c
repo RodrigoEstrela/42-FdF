@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:13:52 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 14:08:02 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:40:41 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,17 @@ t_winint	graf_init(void)
 	g.img.img = mlx_new_image(g.mlx, W, H);
 	g.img.addr = mlx_get_data_addr(g.img.img, &g.img.bpp, &g.img.len, &g.img.e);
 	return (g);
+}
+
+void	draw_img(t_winint *g)
+{
+	g->m = calc_mesh(g->d, g->bs, g->inp, g->m);
+	y_updater(g->d, g->m, g->bs);
+	fil_de_fer(g->d, g->m, g->img);
+	mlx_put_image_to_window(g->mlx, g->mlx_win, g->img.img, 0, 0);
+}
+
+void	clean_slate(t_winint *g)
+{
+	ft_bzero(g->img.addr, H * W * (g->img.bpp / 8));
 }

@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 16:51:16 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:42:15 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ typedef struct coordenadas {
 typedef struct dimensions {
 	int			l;
 	int			c;
-	int			chgx;
-	int			chgy;
+	int			*chg;
 }				t_dimen;
 
 typedef struct image {
@@ -120,5 +119,11 @@ void			directions(int key, t_winint *g);
 void			colors(int key, t_winint *g);
 
 void			zoom(int key, t_winint *g);
+
+void			height_changer(int key, t_winint *g);
+
+void			draw_img(t_winint *g);
+
+void			clean_slate(t_winint *g);
 
 #endif

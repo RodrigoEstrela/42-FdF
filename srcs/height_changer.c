@@ -1,45 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zoom.c                                             :+:      :+:    :+:   */
+/*   height_changer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/19 16:12:55 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/20 15:31:28 by rdas-nev         ###   ########.fr       */
+/*   Created: 2022/04/20 14:14:45 by rdas-nev          #+#    #+#             */
+/*   Updated: 2022/04/20 15:13:13 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 
-static void	zoom_in(t_winint *g)
+static void	height_downer(t_winint *g)
 {
 	clean_slate(g);
-	if (g->bs == 1)
-		g->bs += 1;
-	else if (g->bs == 2)
-		g->bs += 1;
-	else if (g->bs < 90 && g->bs > 2)
-		g->bs += 3;
+	g->d.chg[2] -= 1;
 	draw_img(g);
 }
 
-static void	zoom_out(t_winint *g)
+static void	height_upper(t_winint *g)
 {
 	clean_slate(g);
-	if (g->bs > 3)
-		g->bs -= 3;
-	else if (g->bs == 3)
-		g->bs -= 1;
-	else if (g->bs == 2)
-		g->bs -= 1;
+	g->d.chg[2] += 1;
 	draw_img(g);
 }
 
-void	zoom(int key, t_winint *g)
+void	height_changer(int key, t_winint *g)
 {
-	if (key == 6)
-		zoom_in(g);
-	else if (key == 7)
-		zoom_out(g);
+	if (key == 43)
+		height_downer(g);
+	else if (key == 47)
+		height_upper(g);
 }
