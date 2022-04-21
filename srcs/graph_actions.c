@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:16:46 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/20 15:41:29 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/21 17:57:00 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static int	key_action(int key, t_winint *g)
 		zoom(key, g);
 	else if (key == 43 || key == 47)
 		height_changer(key, g);
-	//else if (key == 35)
-	//	upview(g);
+	else if (key == 32)
+		up_view(g);
+	else if (key == 34)
+		reset_view(key, g);
 	return (0);
 }
 

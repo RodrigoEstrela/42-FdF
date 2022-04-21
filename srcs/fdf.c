@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/20 16:04:26 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/21 18:28:49 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ t_dimen	dim_formater(char *map)
 	while (line)
 	{
 		dim.c = valuescount(line);
-	/*	if (dim.c != checker)
+		if (dim.c != checker)
 		{
 			dim.c = -1;
 			return (dim);
-		}*/
+		}
 		dim.l++;
 		free(line);
 		line = get_next_line(fd);
@@ -99,8 +99,8 @@ int	main(int ac, char **av)
 	g.inp = ft_strdup((const char *)av[1]);
 	counter = 0;
 	g.d = dim_formater(g.inp);
-	//if (g.d.c == -1)
-	//	return (0);
+	if (g.d.c == -1)
+		return (0);
 	g.bs = bargaksetra(g.d.c, g.d.l);
 	g.m = malloc(sizeof(t_guhuza *) * g.d.l);
 	while (counter < g.d.l)
@@ -112,5 +112,9 @@ int	main(int ac, char **av)
 	fil_de_fer(g.d, g.m, g.img);
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	graph_actions(g);
+	free(g.m);
+	counter = 0;
+	while(counter < g.d.l)
+		free(g.m[counter++]);
 	mlx_loop(g.mlx);
 }

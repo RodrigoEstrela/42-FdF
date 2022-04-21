@@ -6,13 +6,13 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 15:57:18 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/13 17:11:07 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/21 10:27:13 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 
-void	line_drawer(t_dimen dim, t_guhuza **m, t_data img)
+static void	line_drawer(t_dimen dim, t_guhuza **m, t_data img)
 {
 	int	a;
 	int	b;
@@ -33,7 +33,7 @@ void	line_drawer(t_dimen dim, t_guhuza **m, t_data img)
 	}
 }
 
-void	column_drawer(t_dimen dim, t_guhuza **m, t_data img)
+static void	column_drawer(t_dimen dim, t_guhuza **m, t_data img)
 {
 	int	a;
 	int	b;

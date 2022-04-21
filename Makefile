@@ -6,7 +6,7 @@
 #    By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 15:28:33 by rdas-nev          #+#    #+#              #
-#    Updated: 2022/04/14 16:20:13 by rdas-nev         ###   ########.fr        #
+#    Updated: 2022/04/21 18:30:23 by rdas-nev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME	=	fdf
 all:		$(NAME)
 
 $(NAME): 	$(SRCS)
-			cc $(SRCS) -g -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			cc $(SRCS)  -g -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 fclean:		
 			$(RM) $(NAME)

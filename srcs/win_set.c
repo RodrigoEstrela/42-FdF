@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:13:52 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/20 15:40:41 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/21 17:57:11 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,13 @@ void	draw_img(t_winint *g)
 void	clean_slate(t_winint *g)
 {
 	ft_bzero(g->img.addr, H * W * (g->img.bpp / 8));
+}
+
+void	reset_view(int key, t_winint *g)
+{
+	if (key == 34)
+	{
+		clean_slate(g);
+		draw_img(g);
+	}
 }

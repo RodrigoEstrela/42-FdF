@@ -6,13 +6,13 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 10:21:58 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/19 14:23:21 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/21 11:11:18 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 
-float	s(float x1, int y1, int x2, int y2)
+static float	s(float x1, int y1, int x2, int y2)
 {
 	float	ret;
 
@@ -20,7 +20,7 @@ float	s(float x1, int y1, int x2, int y2)
 	return (ret);
 }
 
-void	upper_liner(int *p, int *pl, t_data img)
+static void	upper_liner(int *p, int *pl, t_data img)
 {
 	my_mlx_pixel_put(&img, ++pl[0], --pl[1], img.color);
 	while (pl[0] != p[2] || pl[1] != p[3])
@@ -32,7 +32,7 @@ void	upper_liner(int *p, int *pl, t_data img)
 	}
 }
 
-void	downer_liner(int *p, int *pl, t_data img)
+static void	downer_liner(int *p, int *pl, t_data img)
 {
 	my_mlx_pixel_put(&img, ++pl[0], ++pl[1], img.color);
 	while (pl[0] != p[2] || pl[1] != p[3])

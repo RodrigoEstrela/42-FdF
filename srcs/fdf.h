@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/20 15:42:15 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/21 17:57:39 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include<mlx.h>
 
 # define BUFFER_SIZE 10
-# define GREEN 0x0000FF00
 # define W 1750
 # define H 1300
 # define F float
@@ -82,7 +81,7 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 void			super_liner(int *p, t_data img);
 
-float			s(float x1, int y1, int x2, int y2);
+//float			s(float x1, int y1, int x2, int y2);
 
 float			bargaksetra(int columns, int lines);
 
@@ -94,9 +93,9 @@ t_winint		graf_init(void);
 
 void			fil_de_fer(t_dimen dim, t_guhuza **m, t_data img);
 
-void			line_drawer(t_dimen dim, t_guhuza **m, t_data img);
+//void			line_drawer(t_dimen dim, t_guhuza **m, t_data img);
 
-void			column_drawer(t_dimen dim, t_guhuza **m, t_data img);
+//void			column_drawer(t_dimen dim, t_guhuza **m, t_data img);
 
 float			bs_zupdater(float bargak_setra, t_dimen d, char *str);
 
@@ -125,5 +124,9 @@ void			height_changer(int key, t_winint *g);
 void			draw_img(t_winint *g);
 
 void			clean_slate(t_winint *g);
+
+void			up_view(t_winint *g);
+
+void			reset_view(int key, t_winint *g);
 
 #endif
