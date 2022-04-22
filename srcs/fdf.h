@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/21 17:57:39 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/22 12:57:35 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 void			super_liner(int *p, t_data img);
 
-//float			s(float x1, int y1, int x2, int y2);
-
 float			bargaksetra(int columns, int lines);
 
 t_dimen			dim_formater(char *map);
@@ -92,10 +90,6 @@ t_guhuza		**calc_mesh(t_dimen d, float bs, char *str, t_guhuza **m);
 t_winint		graf_init(void);
 
 void			fil_de_fer(t_dimen dim, t_guhuza **m, t_data img);
-
-//void			line_drawer(t_dimen dim, t_guhuza **m, t_data img);
-
-//void			column_drawer(t_dimen dim, t_guhuza **m, t_data img);
 
 float			bs_zupdater(float bargak_setra, t_dimen d, char *str);
 
@@ -128,5 +122,9 @@ void			clean_slate(t_winint *g);
 void			up_view(t_winint *g);
 
 void			reset_view(int key, t_winint *g);
+
+int				ft_isdigit(int c);
+
+int				ft_printf(const char *str, ...);
 
 #endif

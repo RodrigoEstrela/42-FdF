@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/21 18:28:49 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/22 12:56:48 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_dimen	dim_formater(char *map)
 		if (dim.c != checker)
 		{
 			dim.c = -1;
+			ft_printf("\n\e[0;31mWRONG LENGTH ON MAP!\n\n");
 			return (dim);
 		}
 		dim.l++;
@@ -112,9 +113,5 @@ int	main(int ac, char **av)
 	fil_de_fer(g.d, g.m, g.img);
 	mlx_put_image_to_window(g.mlx, g.mlx_win, g.img.img, 0, 0);
 	graph_actions(g);
-	free(g.m);
-	counter = 0;
-	while(counter < g.d.l)
-		free(g.m[counter++]);
 	mlx_loop(g.mlx);
 }
