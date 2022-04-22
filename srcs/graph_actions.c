@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:16:46 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/22 12:25:02 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:53:50 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	key_action(int key, t_winint *g)
 {
 	if (key == 53)
 	{	
+		mlx_destroy_image(g->mlx, g->img.img);
 		mlx_destroy_window(g->mlx, g->mlx_win);
 		exit(0);
 	}

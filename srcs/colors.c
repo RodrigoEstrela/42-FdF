@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:32:24 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/21 13:56:12 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/22 18:27:14 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void	blue(t_winint *g)
 {
-	g->img.color = 0x000000FF;
+	g->img.colorcode = 0x000000FF;
 	draw_img(g);
 }
 
 static void	green(t_winint *g)
 {
-	g->img.color = 0x0000FF00;
+	g->img.colorcode = 0x0000FF00;
 	draw_img(g);
 }
 
 static void	yellow(t_winint *g)
 {
-	g->img.color = 0x00FFFF00;
+	g->img.colorcode = 0x00FFFF00;
 	draw_img(g);
 }
 
 static void	red(t_winint *g)
 {
-	g->img.color = 0x00FF0000;
+	g->img.colorcode = 0x00FF0000;
 	draw_img(g);
 }
 

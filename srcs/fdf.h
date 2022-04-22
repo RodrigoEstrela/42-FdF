@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/22 12:57:35 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/22 18:28:33 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include<fcntl.h>
 # include<unistd.h>
 # include<mlx.h>
+# include"ft_printf.h"
+# include"libft.h"
 
 # define BUFFER_SIZE 10
 # define W 1750
@@ -31,12 +33,14 @@ typedef struct s_data {
 	int			len;
 	int			e;
 	int			color;
+	int			colorcode;
 }				t_data;
 
 typedef struct coordenadas {
 	int			x;
 	int			y;
 	int			z;
+	int			color;
 }				t_guhuza;
 
 typedef struct dimensions {
@@ -55,25 +59,11 @@ typedef struct image {
 	t_dimen		d;
 }				t_winint;
 
-char			*ft_strchr(const char *s, int c);
-
 char			*ft_exstrchr(char *s);
-
-size_t			ft_strlen(const char *str);
-
-char			*ft_strnldup(char *s1);
-
-char			*ft_strjoin(char *s1, char *s2);
-
-char			*ft_strdup(const char *s1);
 
 char			*get_next_line(int fd);
 
-size_t			ft_strlcpy(char *dst, char *src, size_t size);
-
 int				valuescount(char *s);
-
-int				ft_atoi(const char *str);
 
 char			**ft_split(const char *s, char c);
 
@@ -99,13 +89,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void			graph_actions(t_winint g);
 
-char			*ft_strdup(const char *s1);
-
-void			*ft_calloc(size_t count, size_t size);
-
 void			y_updater(t_dimen dim, t_guhuza **matriz, float bargak_setra);
-
-void			ft_bzero(void *s, size_t n);
 
 void			directions(int key, t_winint *g);
 
@@ -123,8 +107,12 @@ void			up_view(t_winint *g);
 
 void			reset_view(int key, t_winint *g);
 
-int				ft_isdigit(int c);
+char			*ft_strjoin(char *s1, char *s2);
 
-int				ft_printf(const char *str, ...);
+char			*ft_strnldup(char *s1);
+
+size_t			ft_strlen(const char *str);
+
+int				color_reader(char *s);
 
 #endif

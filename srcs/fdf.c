@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:22:38 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/22 12:56:48 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/22 18:34:25 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_guhuza	**calc_mesh(t_dimen d, float bs, char *str, t_guhuza **m)
 			m[ar[1]][ar[0]].x = ar[3] + d.chg[0];
 			m[ar[1]][ar[0]].y = ar[4] + d.chg[1];
 			m[d.l - ar[1] - 1][ar[0]].z = ft_atoi(pp[ar[0]]) * d.chg[2];
+			m[d.l - ar[1] - 1][ar[0]].color = color_reader(pp[ar[0]]);
 			ar[3] += (bs * 2);
 			ar[4] -= (bs);
 		}
@@ -96,8 +97,7 @@ int	main(int ac, char **av)
 	if (error_check(ac, av[1]) == 0)
 		return (0);
 	g = graf_init();
-	g.inp = ft_calloc(ft_strlen(av[1] + 1), sizeof(char *));
-	g.inp = ft_strdup((const char *)av[1]);
+	g.inp = av[1];
 	counter = 0;
 	g.d = dim_formater(g.inp);
 	if (g.d.c == -1)
@@ -107,7 +107,7 @@ int	main(int ac, char **av)
 	while (counter < g.d.l)
 		g.m[counter++] = malloc(sizeof(t_guhuza) * g.d.c);
 	g.d.chg = (int [3]){0, 0, 1};
-	g.img.color = 0x0000FF00;
+	g.img.color = 0xFFFFFF;
 	g.m = calc_mesh(g.d, g.bs, g.inp, g.m);
 	y_updater(g.d, g.m, g.bs);
 	fil_de_fer(g.d, g.m, g.img);
