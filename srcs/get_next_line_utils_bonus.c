@@ -6,12 +6,11 @@
 /*   By: fde-albe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:30:47 by fde-albe          #+#    #+#             */
-/*   Updated: 2022/04/22 16:47:38 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/25 12:10:06 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf.h"
-#include"libft.h"
+#include "fdf.h"
 
 size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {

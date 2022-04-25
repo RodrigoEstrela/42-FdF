@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:07:06 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/22 13:07:05 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/25 12:10:49 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 static int	file_exists(char *str)
 {
-	int	fd;
+	int		fd;
+	char	*line;
 
 	fd = open(str, O_RDWR);
 	if (fd == -1)
+	{
+		close(fd);
 		return (-1);
+	}
+	line = (get_next_line(fd));
+	if (line == NULL)
+	{
+		close(fd);
+		return (-1);
+	}
+	close(fd);
 	return (0);
 }
 
@@ -41,7 +52,7 @@ int	error_check(int ac, char *str)
 	}
 	else if (file_exists(str) == -1)
 	{
-		ft_printf("\n\e[0;31mFILE DOESN'T EXIST!\n\n");
+		ft_printf("\n\e[0;31mFILE DOESN'T EXIST OR IS EMPTY! \n\n");
 		return (0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: rdas-nev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:43:23 by rdas-nev          #+#    #+#             */
-/*   Updated: 2022/04/22 18:28:33 by rdas-nev         ###   ########.fr       */
+/*   Updated: 2022/04/25 11:40:18 by rdas-nev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,7 @@ char			*ft_strnldup(char *s1);
 size_t			ft_strlen(const char *str);
 
 int				color_reader(char *s);
+
+t_guhuza		**malltrix(t_guhuza **m, t_winint *g);
 
 #endif
